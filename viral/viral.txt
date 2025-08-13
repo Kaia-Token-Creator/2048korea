@@ -97,7 +97,7 @@
           정확한 링크를 걸어주세요.
         </li>
         <li>
-          <a href="mailto:2048korea@gmail.com">2048korea@gmail.com</a>
+          <a href="mailto:kaiatokencreator@gmail.com">kaiatokencreator@gmail.com</a>
           으로 스크린샷과 계좌번호를 보내주세요.
         </li>
         <li>
