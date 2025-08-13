@@ -156,6 +156,24 @@
     .overlay p { margin: 0 0 14px; }
 
     .sr-only { position:absolute; left:-9999px; }
+
+.event-box {
+  font-family: inherit;
+  font-size: clamp(13px, 3.2vw, 14px);
+  margin: 16px 0;
+}
+
+.event-box .event-title {
+  display: block;
+  font-size: clamp(12px, 3vw, 13px); /* 다른 텍스트와 동일하거나 조금 작게 */
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.event-box .highlight {
+  color: #d9534f; /* 강조 색 (빨간계열) */
+}
+
   </style>
 </head>
 <body>
@@ -198,7 +216,7 @@
     </div>
 <!-- 100만원 이벤트 안내 -->
 <div class="event-box">
-  <strong>2048 유저분들에게 매달 <span class="highlight">100만원</span>을 드립니다</strong>
+  <strong class="event-title">2048 유저분들에게 매달 <span class="highlight">100만원</span>을 드립니다</strong>
   <ol>
     <li>채팅방(개인/단톡)이나 SNS(유튜브, 틱톡 포함), 게시판, 댓글 등에 <strong>“이거 깰 수 있는 분?”</strong> 멘트와 함께 <strong>www.2048korea.com</strong> 정확한 링크를 걸어주세요.</li>
     <li><strong>2048korea@gmail.com</strong> 으로 스크린샷과 계좌번호를 보내주세요.</li>
