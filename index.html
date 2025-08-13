@@ -1,3 +1,6 @@
+좋아. **딱 두 군데만** 바꾼 완성본이야. (1) `.board`에 `width/height/aspect-ratio` 폴백 추가, (2) 맨 아래 초기 실행 순서를 `sizeBoard()` → `requestAnimationFrame(start)`로 변경. 나머지는 손대지 않았어.
+
+```html
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -103,6 +106,11 @@
     -webkit-user-select: none;
     overflow: hidden;
     /* width/height는 JS에서 동적으로 설정 (정사각) */
+
+    /* ✅ 추가: 초기 프레임 안정화를 위한 폴백 */
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
   }
   .cell { background: var(--tile-empty); border-radius: 10px; width: 100%; height: 100%; }
 
@@ -472,8 +480,12 @@ window.addEventListener('orientationchange', sizeBoard);
   window.addEventListener('orientationchange', ()=> { setTimeout(()=>{ setSafeVH(); sizeBoard(); render(); }, 100); });
 
   bestEl.textContent = Number(localStorage.getItem('best2048')||'0');
-  start(true);
+
+  /* ✅ 변경: 보드 크기 먼저 확정 → 다음 프레임에 게임 시작 */
+  sizeBoard();
+  requestAnimationFrame(()=>{ start(true); });
 })();
 </script>
 </body>
 </html>
+```
