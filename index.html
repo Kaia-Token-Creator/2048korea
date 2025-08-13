@@ -6,93 +6,84 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>2048 Korea</title>
-<meta name="description" content="2048 Korea! 과연 니가 깰 수 있을까?">
+  <meta name="description" content="2048 Korea! 과연 니가 깰 수 있을까?">
 
-<!-- Open Graph (KakaoTalk 등) -->
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="2048 Korea">
-<meta property="og:title" content="2048 Korea! 과연 니가 깰 수 있을까?">
-<meta property="og:description" content="2048 Korea! 과연 니가 깰 수 있을까?">
-<meta property="og:url" content="https://Kaia-Token-Creator.github.io/2048korea">
-<meta property="og:image" content="https://Kaia-Token-Creator.github.io/2048korea/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+  <!-- Open Graph (KakaoTalk 등) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="2048 Korea">
+  <meta property="og:title" content="2048 Korea! 과연 니가 깰 수 있을까?">
+  <meta property="og:description" content="2048 Korea! 과연 니가 깰 수 있을까?">
+  <meta property="og:url" content="https://Kaia-Token-Creator.github.io/2048korea">
+  <meta property="og:image" content="https://Kaia-Token-Creator.github.io/2048korea/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
 
-<!-- X(Twitter) 카드 -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="2048 Korea! 과연 니가 깰 수 있을까?">
-<meta name="twitter:description" content="2048 Korea! 과연 니가 깰 수 있을까?">
-<meta name="twitter:image" content="https://Kaia-Token-Creator.github.io/2048korea/og-image.png">
+  <!-- X(Twitter) 카드 -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="2048 Korea! 과연 니가 깰 수 있을까?">
+  <meta name="twitter:description" content="2048 Korea! 과연 니가 깰 수 있을까?">
+  <meta name="twitter:image" content="https://Kaia-Token-Creator.github.io/2048korea/og-image.png">
 
-<!-- 파비콘/앱 아이콘 -->
-<link rel="icon" href="/favicon.ico">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta name="theme-color" content="#faf8ef">
+  <!-- 파비콘/앱 아이콘 -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#faf8ef">
+
   <style>
     :root {
       --bg: #faf8ef;
       --board: #bbada0;
       --tile-empty: #cdc1b4;
-      --text: #2b2b2b; /* 상단 안내 가독성 위해 살짝 진한 검정 */
+      --text: #2b2b2b;
       --accent: #8f7a66;
       --tile-2: #eee4da; --tile-4: #ede0c8; --tile-8: #f2b179; --tile-16: #f59563; --tile-32: #f67c5f; --tile-64: #f65e3b;
       --tile-128: #edcf72; --tile-256: #edcc61; --tile-512: #edc850; --tile-1024: #edc53f; --tile-2048: #edc22e;
-      --blue: #2563eb; /* 파란색 링크 */
+      --blue: #2563eb;
     }
+
     html, body {
-      height: 100%;
+      height: auto;            /* ✅ 전체 페이지 스크롤 허용 */
       margin: 0;
       background: var(--bg);
       color: var(--text);
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", AppleSDGothicNeo, Helvetica, Arial, sans-serif;
     }
-    /* Prevent page scroll while interacting */
-    body, #app, .game-wrap, .board {
-      overscroll-behavior: contain;
+
+    /* ✅ 전역 스크롤 차단 해제 */
+    body, #app, .game-wrap {
+      overscroll-behavior: auto;
       -webkit-overflow-scrolling: touch;
-      touch-action: none;
+      touch-action: auto;
     }
 
     #app { max-width: 520px; margin: 0 auto; padding: 16px; }
+    @media (min-width: 768px){ /* 태블릿 이상에서 살짝 넓게 */
+      #app { max-width: 640px; }
+    }
 
     /* ===== 상단/하단 안내 ===== */
-    .top-block {
-      margin: 8px 0 14px;
-      line-height: 1.5;
-    }
+    .top-block { margin: 8px 0 14px; line-height: 1.5; }
     .top-main {
-      margin: 0 0 6px;
-      font-weight: 700;
-      color: #000; /* 검정 */
-      font-size: clamp(16px, 3.8vw, 20px);
-      letter-spacing: 0.1px;
+      margin: 0 0 6px; font-weight: 700; color: #000;
+      font-size: clamp(16px, 3.8vw, 20px); letter-spacing: 0.1px;
     }
-    .top-link {
-      margin: 0;
-      font-size: clamp(13px, 3.2vw, 14px); /* 더 작은 글씨 */
-    }
-    .top-link a {
-      color: var(--blue); /* 파란색 */
-      text-decoration: none;
-    }
+    .top-link { margin: 0; font-size: clamp(13px, 3.2vw, 14px); }
+    .top-link a { color: var(--blue); text-decoration: none; }
     .top-link a:hover { text-decoration: underline; }
 
     .below-cta {
-      margin: 18px 0 6px; /* 게임 아래 조금 띄우기 */
-      text-align: left;
-      font-size: clamp(13px, 3.2vw, 14px);
+      margin: 18px 0 6px; text-align: left; font-size: clamp(13px, 3.2vw, 14px);
     }
-    .below-cta a {
-      color: var(--blue); /* 파란색 */
-      text-decoration: none;
-      font-weight: 600;
-    }
+    .below-cta a { color: var(--blue); text-decoration: none; font-weight: 600; }
     .below-cta a:hover { text-decoration: underline; }
 
     header { display:flex; justify-content: space-between; align-items: center; gap: 12px; }
     h1 { font-size: clamp(20px, 6vw, 36px); margin: 0; letter-spacing: 0.5px; }
     .badges { display:flex; gap: 8px; }
-    .badge { background: #bbada0; color: #fff; padding: 8px 12px; border-radius: 10px; text-align:center; min-width: 84px; }
+    .badge {
+      background: #bbada0; color: #fff; padding: 8px 12px; border-radius: 10px;
+      text-align:center; min-width: 84px;
+    }
     .badge .label { font-size: 12px; opacity: .9; }
     .badge .val { font-size: 18px; font-weight: 700; }
 
@@ -116,18 +107,17 @@
       user-select: none;
       -webkit-user-select: none;
       overflow: hidden;
+
+      /* ✅ 세로 스크롤은 통과, 가로 스와이프만 우리가 처리 */
+      touch-action: pan-y;
     }
 
     .cell { background: var(--tile-empty); border-radius: 10px; width: 100%; height: 100%; }
 
     .tile { position: absolute; inset: 0; margin: 0; }
     .tile > div {
-      position: absolute;
-      border-radius: 10px;
-      display:flex; align-items:center; justify-content:center;
-      font-weight: 800;
-      font-size: clamp(18px, 5.2vw, 34px);
-      color: #776e65;
+      position: absolute; border-radius: 10px; display:flex; align-items:center; justify-content:center;
+      font-weight: 800; font-size: clamp(18px, 5.2vw, 34px); color: #776e65;
       transition: transform 80ms ease-in, background-color 80ms linear, color 80ms linear;
     }
 
@@ -148,8 +138,7 @@
 
     .overlay {
       position: absolute; inset: 0; display:none; align-items:center; justify-content:center;
-      background: rgba(238, 228, 218, 0.73);
-      border-radius: 14px; text-align:center; padding: 24px;
+      background: rgba(238, 228, 218, 0.73); border-radius: 14px; text-align:center; padding: 24px;
     }
     .overlay.show { display:flex; }
     .overlay h2 { margin: 0 0 8px; font-size: clamp(18px, 5.4vw, 28px); }
@@ -157,28 +146,17 @@
 
     .sr-only { position:absolute; left:-9999px; }
 
-.event-box {
-  font-family: inherit;
-  font-size: clamp(13px, 3.2vw, 14px);
-  margin: 16px 0;
-}
-
-.event-box .event-title {
-  display: block;
-  font-size: clamp(12px, 3vw, 13px); /* 다른 텍스트와 동일하거나 조금 작게 */
-  font-weight: bold;
-  margin-bottom: 8px;
-}
-
-.event-box .highlight {
-  color: #d9534f; /* 강조 색 (빨간계열) */
-}
-
+    /* 이벤트 박스 */
+    .event-box { font-size: clamp(13px, 3.2vw, 14px); margin: 16px 0; }
+    .event-box .event-title {
+      display: block; font-size: clamp(13px, 3.2vw, 14px); font-weight: bold; margin-bottom: 8px;
+    }
+    .event-box .highlight { color: #d9534f; }
   </style>
 </head>
 <body>
   <div id="app" role="application" aria-label="2048 Game">
-    <!-- ===== 최상단 안내 (링크 없는 검정 문구 + 파란 링크) ===== -->
+    <!-- ===== 최상단 안내 ===== -->
     <div class="top-block" aria-label="사용 안내">
       <p class="top-link">
         <a href="https://Kaia-Token-Creator.github.io/2048korea/vpn" target="_blank" rel="noopener">
@@ -200,7 +178,7 @@
       <button id="undoBtn" aria-label="되돌리기">되돌리기</button>
     </div>
 
-    <!-- ===== 게임 영역 (코드 수정 없음) ===== -->
+    <!-- ===== 게임 영역 ===== -->
     <div class="game-wrap">
       <div class="board" id="board" tabindex="0" aria-label="게임 보드 4x4" aria-live="polite"></div>
       <div class="overlay" id="overlay" role="dialog" aria-modal="true">
@@ -211,16 +189,17 @@
         </div>
       </div>
     </div>
-<!-- 100만원 이벤트 안내 -->
-<div class="event-box">
-  <strong class="event-title">2048 유저분들에게 매달 <span class="highlight">100만원</span>을 드립니다</strong>
-  <ol>
-    <li>채팅방(개인/단톡)이나 SNS(유튜브, 틱톡 포함), 게시판, 댓글 등에 <strong>“이거 깰 수 있는 분?”</strong> 멘트와 함께 <strong>www.2048korea.com</strong> 정확한 링크를 걸어주세요.</li>
-    <li><strong>2048korea@gmail.com</strong> 으로 스크린샷과 계좌번호를 보내주세요.</li>
-    <li>매달 한 분 추첨을 통해 <strong>100만원</strong>을 드립니다.</li>
-  </ol>
-  <p class="winner">🎉 7월 당첨자 김태*님 축하드립니다!!</p>
-</div>
+
+    <!-- 100만원 이벤트 안내 -->
+    <div class="event-box">
+      <strong class="event-title">2048 유저분들에게 매달 <span class="highlight">100만원</span>을 드립니다</strong>
+      <ol>
+        <li>채팅방(개인/단톡)이나 SNS(유튜브, 틱톡 포함), 게시판, 댓글 등에 <strong>“이거 깰 수 있는 분?”</strong> 멘트와 함께 <strong>www.2048korea.com</strong> 정확한 링크를 걸어주세요.</li>
+        <li><strong>2048korea@gmail.com</strong> 으로 스크린샷과 계좌번호를 보내주세요.</li>
+        <li>매달 한 분 추첨을 통해 <strong>100만원</strong>을 드립니다.</li>
+      </ol>
+      <p class="winner">🎉 7월 당첨자 김태*님 축하드립니다!!</p>
+    </div>
 
     <!-- ===== 게임 아래 파란 링크 ===== -->
     <p class="below-cta">
@@ -232,7 +211,7 @@
     <p class="sr-only" id="status" aria-live="assertive"></p>
   </div>
 
-  <!-- ===== 게임 스크립트: 원본 그대로 (수정 없음) ===== -->
+  <!-- ===== 게임 스크립트 (원본 로직 유지) ===== -->
   <script>
   (function(){
     const SIZE = 4;
@@ -247,14 +226,11 @@
     const retryBtn = document.getElementById('retry');
     const undoBtn = document.getElementById('undoBtn');
 
-    const stopScroll = (e) => { e.preventDefault(); };
-    ['touchstart','touchmove','wheel'].forEach(evt => {
-      boardEl.addEventListener(evt, stopScroll, { passive: false });
-    });
-
-    const cellPositions = [];
-    const gap = () => parseFloat(getComputedStyle(boardEl).gap) || 8;
-    const pad = () => parseFloat(getComputedStyle(boardEl).padding) || 8;
+    // ❌ (삭제됨) 전역 스크롤 차단 리스너
+    // const stopScroll = (e) => { e.preventDefault(); };
+    // ['touchstart','touchmove','wheel'].forEach(evt => {
+    //   boardEl.addEventListener(evt, stopScroll, { passive: false });
+    // });
 
     function buildCells(){
       boardEl.innerHTML = '';
@@ -271,17 +247,13 @@
 
     let grid, score, best, history = [];
 
-    function emptyGrid(){
-      return Array.from({length: SIZE}, () => Array(SIZE).fill(0));
-    }
+    function emptyGrid(){ return Array.from({length: SIZE}, () => Array(SIZE).fill(0)); }
 
     function start(newSeed=true){
       grid = emptyGrid();
       score = 0;
       updateScore(0);
-      if (newSeed){
-        addRandomTile(); addRandomTile();
-      }
+      if (newSeed){ addRandomTile(); addRandomTile(); }
       history = [];
       render();
       hideOverlay();
@@ -346,21 +318,13 @@
       }
 
       if (dir==='left'){
-        for (let r=0;r<SIZE;r++){
-          processLine(i => grid[r][i], (i,v)=> grid[r][i]=v);
-        }
+        for (let r=0;r<SIZE;r++){ processLine(i => grid[r][i], (i,v)=> grid[r][i]=v); }
       } else if (dir==='right'){
-        for (let r=0;r<SIZE;r++){
-          processLine(i => grid[r][SIZE-1-i], (i,v)=> grid[r][SIZE-1-i]=v);
-        }
+        for (let r=0;r<SIZE;r++){ processLine(i => grid[r][SIZE-1-i], (i,v)=> grid[r][SIZE-1-i]=v); }
       } else if (dir==='up'){
-        for (let c=0;c<SIZE;c++){
-          processLine(i => grid[i][c], (i,v)=> grid[i][c]=v);
-        }
+        for (let c=0;c<SIZE;c++){ processLine(i => grid[i][c], (i,v)=> grid[i][c]=v); }
       } else if (dir==='down'){
-        for (let c=0;c<SIZE;c++){
-          processLine(i => grid[SIZE-1-i][c], (i,v)=> grid[SIZE-1-i][c]=v);
-        }
+        for (let c=0;c<SIZE;c++){ processLine(i => grid[SIZE-1-i][c], (i,v)=> grid[SIZE-1-i][c]=v); }
       }
 
       moved = JSON.stringify(before)!==JSON.stringify(grid);
@@ -400,8 +364,8 @@
       const g = getComputedStyle(boardEl);
       const G = parseFloat(g.gap);
       const P = parseFloat(g.padding);
-      const cols = SIZE; const rows = SIZE;
       const rect = boardEl.getBoundingClientRect();
+      const cols = SIZE, rows = SIZE;
       const innerW = rect.width - P*2 - G*(cols-1);
       const innerH = rect.height - P*2 - G*(rows-1);
       const cw = innerW / cols; const ch = innerH / rows;
@@ -416,10 +380,10 @@
         tile.style.transform = `translate(${P + c*(cw+G)}px, ${P + r*(ch+G)}px)`;
         layer.appendChild(tile);
       }
-
       boardEl.appendChild(layer);
     }
 
+    // 키보드
     const keyMap = {
       'ArrowLeft':'left','a':'left','A':'left',
       'ArrowRight':'right','d':'right','D':'right',
@@ -431,15 +395,27 @@
       if (dir){ e.preventDefault(); move(dir); }
     }, { passive:false });
 
+    // 터치 스와이프 (세로 스크롤 허용, 가로 제스처만 캡처)
     let touchStartX=0, touchStartY=0, touching=false;
-    const SWIPE_MIN = 18;
+    const SWIPE_MIN = 18; // px
     boardEl.addEventListener('touchstart', (e)=>{
       if (!e.touches || !e.touches[0]) return;
       touching = true;
       touchStartX = e.touches[0].clientX;
       touchStartY = e.touches[0].clientY;
+    }, { passive:true }); // ✅ touchstart는 passive로 두어 스크롤 시작 허용
+
+    boardEl.addEventListener('touchmove', (e)=>{
+      if (!touching) return;
+      const t = e.touches[0];
+      const dx = t.clientX - touchStartX;
+      const dy = t.clientY - touchStartY;
+      // 가로 이동이 크고 임계값 넘을 때만 기본동작 차단 (세로 스크롤은 통과)
+      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > SWIPE_MIN) {
+        e.preventDefault();
+      }
     }, { passive:false });
-    boardEl.addEventListener('touchmove', (e)=>{ if (touching) e.preventDefault(); }, { passive:false });
+
     boardEl.addEventListener('touchend', (e)=>{
       if (!touching) return; touching=false;
       const t = e.changedTouches[0];
