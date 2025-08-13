@@ -156,6 +156,39 @@
     .overlay p { margin: 0 0 14px; }
 
     .sr-only { position:absolute; left:-9999px; }
+
+/* === Tablet 전용 조정: 게임판 작게 + 페이지 스크롤 가능 === */
+@media (min-width: 600px) and (max-width: 1024px) {
+  /* 태블릿에서는 페이지 스크롤을 막지 않음 */
+  body, #app {
+    touch-action: auto;
+    overscroll-behavior: auto;
+  }
+
+  /* 앱 너비를 조금 줄여서 정사각 보드도 함께 작아지도록 */
+  #app {
+    max-width: 420px;  /* 기존 520px → 420px */
+    padding: 12px;
+  }
+
+  /* 타일 간격/패딩도 약간 줄여서 전체 높이 축소 */
+  .board {
+    gap: 10px;
+    padding: 10px;
+  }
+
+  /* 상단 안내 글씨 살짝 축소 (줄바꿈 방지용) */
+  .top-main {
+    font-size: clamp(15px, 3.2vw, 18px);
+  }
+}
+
+/* === 화면이 낮은 태블릿(가로방향 등)에서 보드가 화면을 넘어가면 더 줄이기 === */
+@media (max-height: 720px) and (orientation: landscape) {
+  #app { max-width: 380px; }
+  .board { gap: 8px; padding: 8px; }
+}
+
   </style>
 </head>
 <body>
@@ -443,3 +476,6 @@
   </script>
 </body>
 </html>
+
+여기서 다른건 바꾸지말고 태블릿같은 기기에서 리사이징되게 바꿔봐 아래 화면이 안보여
+태블릿에서는 게임화면을 좀 작게 바꿔
