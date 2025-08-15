@@ -216,7 +216,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- ===== 최상단 안내 (링크 없는 검정 문구 + 파란 링크) ===== -->
     <div class="top-block" aria-label="사용 안내">
       <p class="top-main">
-        2048을 만들어보세요. 방향키 or 스와이프!<br>과연 내친구는 깰 수 있을까 공유해보세요
+        2048을 만들어보세요. 방향키 or 스와이프!<br>과연 내친구는 깰 수 있을까 공유해보세요 <button onclick="shareSite()" style="background:none;border:none;cursor:pointer;padding:0;">
+  <img src="https://cdn-icons-png.flaticon.com/512/929/929610.png"
+       alt="공유하기" width="16" height="16">
+</button>
+
+<script>
+function shareSite() {
+  const shareData = {
+    title: '2048 Korea',
+    text: '이거 깰 수 있어?',
+    url: 'https://www.2048korea.com'
+  };
+
+  if (navigator.share) {
+    navigator.share(shareData).catch(err => console.log(err));
+  } else {
+    navigator.clipboard.writeText(shareData.url)
+      .then(() => {
+        alert("복사되었습니다");
+      })
+      .catch(err => {
+        console.error("링크 복사 실패:", err);
+      });
+  }
+}
+</script>
       </p>
       <p class="top-link">
         <a href="/vpn/index.html" target="_blank" rel="noopener">
@@ -253,7 +278,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="event-box">
   <strong>
     <a href="/viral/index.html" target="_blank" style="text-decoration:none; color:inherit;" rel="noopener">
-      <br> Click! 2048 유저분들에게 매달 <span class="highlight">100만원</span>의 행운이?!
+      <br> 이 게임 공유하면 매달 <span class="highlight">100만원</span>을 준다고?!
     </a>
   </strong>
 </div>
