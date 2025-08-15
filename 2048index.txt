@@ -225,7 +225,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 function shareSite() {
   const shareData = {
     title: '2048 Korea',
-    text: '이거 깰 수 있어?',
+    text: '이거 깰 수 있는 분?',
     url: 'https://www.2048korea.com'
   };
 
