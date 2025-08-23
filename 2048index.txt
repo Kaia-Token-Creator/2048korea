@@ -289,6 +289,7 @@ function shareSite() {
       <a href="/exchange/index.html" target="_blank" rel="noopener">
         설마 아직도? 국내거래소 쓰고 계신가요?
       </a>
+<a href="https://face-reading-korea.com/">소름돋는 Ai 관상 / 사주 보러가기</a>
     </p>
 
     <p class="sr-only" id="status" aria-live="assertive"></p>
@@ -520,8 +521,6 @@ function shareSite() {
     start(true);
   })();
   </script>
-
-<a href="https://face-reading-korea.com/">소름돋는 Ai 관상 / 사주 보러가기</a>
 
 <a href="https://iryan.kr/t7372qw09f" target="_blank" rel="noopener noreferrer">
   <img
