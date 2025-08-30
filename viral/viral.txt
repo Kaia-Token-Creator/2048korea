@@ -1,13 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-NCMMF9VJ');</script>
-<!-- End Google Tag Manager -->
+
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>event — 2048 Korea</title>
@@ -87,14 +81,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </style>
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NCMMF9VJ"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
   <div class="wrap">
     <header>
       <h1>이벤트</h1>
-      <a class="btn" href="https://www.2048korea.com" target="_blank" rel="noopener">홈으로</a>
+      <a class="btn" href="https://2048global.com/KR" target="_blank" rel="noopener">홈으로</a>
     </header>
 
     <div class="card">
@@ -104,7 +94,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li>
           채팅방(개인/단톡)이나 SNS(유튜브, 틱톡 포함), 게시판, 댓글 등에
           <strong>“이거 깰 수 있는 분?”</strong> 멘트와 함께
-          <a href="https://www.2048korea.com" target="_blank" rel="noopener">www.2048korea.com</a>
+          <a href="https://2048global.com/KR" target="_blank" rel="noopener">https://2048global.com/KR</a>
           정확한 링크를 걸어주세요.
         </li>
         <li>
@@ -115,10 +105,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           매달 한 분 추첨을 통해 <strong>100만원</strong>을 드립니다.
         </li>
       </ol>
-
-      <p>🎉 7월 당첨자 김태*님 축하드립니다!!</p>
-
-
 
     <footer>© 2048 Korea</footer>
   </div>
